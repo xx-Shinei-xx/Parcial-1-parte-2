@@ -3,10 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
 
-from scipy.stats import binom
-from scipy.special import comb
-
-
+# Con este codigo, evita que un texto de vigencia no salga
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
@@ -42,10 +39,6 @@ def distribucion_binomial(n, p):
     st.pyplot()
   
 
-#para el nombre de la persona
-#name = input('Por favor indicame tu nombre:')
-#print(f'Hola {name}')
-
 
 #definimos los valores para n y para p
 def valores_de_n_y_p():
@@ -55,9 +48,8 @@ def valores_de_n_y_p():
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
  # cuadro de color
- #originalmente había pensado usar este widget para que el fondo de la página y otras cosas cambiaran de color al color que el usuario escoge pero no me salió :c, asi que lo deje solo para estorbar xd
+ # originalmente había pensado usar este widget para que el fondo de la página y otras cosas cambiaran de color al color que el usuario escoge pero no me salió :c, asi que lo deje solo para estorbar xd
     text_color = st.color_picker("Escoge un color", "#FFFFFF")
-    #background_color = st.color_picker("Selecciona el color de fondo", "#2E2E2E")
     st.markdown(
         f"""
         <style>
