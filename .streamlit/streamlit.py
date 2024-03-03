@@ -52,8 +52,8 @@ def valores_de_n_y_p():
 
 
   # User input for n and p
-    n = st.slider("Select the value of n (number of trials)", min_value=1, max_value=100, value=1, step=1)
-    p = st.slider("Select the value of p (probability of success)", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+    n = st.slider("Select the value of n (number of trials)", min_value=1, max_value=99, value=1, step=1)
+    p = st.slider("Select the value of p (probability of success)", min_value=0.0, max_value=0.9, value=0.5, step=0.01)
 
     if st.button("Plot Distribution"):
         if p > 1:
