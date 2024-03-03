@@ -36,13 +36,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-  choice = input(f"Dime {name}, ¿te gustaría ingresar valores personalizados para n y p? (si/no): ")
-    if choice.lower() == 'si':
-        n, p = valores_de_n_y_p()
-    else:
-        # Default values
-        n = 1
-        p = 0.5
-
-    distribucion_binomial(n, p)
-    #fin
+ 
