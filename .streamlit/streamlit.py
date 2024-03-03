@@ -87,6 +87,23 @@ def valores_de_n_y_p():
                  disabled=True)  # Set disabled parameter to True to make it read-only
 
 
+    # Color picker to change text color
+    text_color = st.color_picker("Select text color", "#FFFFFF")
+
+    # Apply selected color to the text elements
+    st.markdown(
+        f"""
+        <style>
+        .stText > div > div > div > div > div > div {{
+            color: {text_color};
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+    
  # #para los valores de n (número de experimentos realizados)
     n = st.slider("Por favor ingresar el número de experimentos realizados (n) menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
      #para los valores de p (probabilidad)
