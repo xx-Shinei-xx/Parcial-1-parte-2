@@ -49,9 +49,7 @@ def valores_de_n_y_p():
     st.title('Distribución binomial')
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
-st.latex(r'''
-    P(X = k) = \binom{n}{k} \cdot p^k \cdot (1 - p)^{n - k}
-      ''')
+
 
  with st.sidebar:
         st.header('User Input')
