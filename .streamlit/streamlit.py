@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
  
 # Para la distribucion binomial
-def distribucion_binomial(n, p):
+def distribucion_binomial(int(n), p):
     # Para los valores de x 
     x = np.arange(0, n+1)
     # Formula de la distribucion binomial 
