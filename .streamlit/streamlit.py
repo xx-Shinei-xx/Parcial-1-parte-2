@@ -19,7 +19,7 @@ def distribucion_binomial(n, p):
 
      # Para hacer que la gráfica tenga varios colores  "https://matplotlib.org/stable/users/explain/colors/colormaps.html"
     norm = Normalize(vmin=0, vmax=max(y))
-    cmap = plt.get_cmap('inferno')
+    cmap = plt.get_cmap('gist_heat')
 
     # Para graficar con varios colores cada barrita
     plt.bar(x, y, color=cmap(norm(y)))
@@ -50,20 +50,20 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
-
- # #para los valores de n (número de experimentos realizados)
-    n = st.slider("Por favor ingrese un valor de n menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
-# CSS para colores
-    st.markdown(
-        """
+#color para n
+st.markdown(
+        f"""
         <style>
-        .st-cc {
-            background: linear-gradient(to right,black, red, orange, yellow, green, cyan, blue, violet, white);
-        }
+        .stSlider > div > div > div > div > div > div > div > div {{
+            background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+        }}
         </style>
         """,
         unsafe_allow_html=True
     )
+ 
+ # #para los valores de n (número de experimentos realizados)
+    n = st.slider("Por favor ingrese un valor de n menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
  
      #para los valores de p (probabilidad)
     p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
