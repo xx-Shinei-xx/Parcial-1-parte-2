@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
  
 # Para la distribucion binomial
-def distribucion_binomial(int(n), p):
+def distribucion_binomial(n, p):
     # Para los valores de x 
     x = np.arange(0, n+1)
     # Formula de la distribucion binomial 
@@ -13,7 +13,7 @@ def distribucion_binomial(int(n), p):
     # Mayor parte de los códigos los leí aqui "https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html" :3
 
     #para el color
-    #plt.bar(x, Prob, color='black')
+    plt.bar(x, Prob, color='black')
     #Título
     plt.title('Distribución binomial ')
     #para el nombre del eje x, el cual es el número de éxitos donde la "x" representa el numero de exitos en la distribución binomial
