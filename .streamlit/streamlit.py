@@ -93,9 +93,18 @@ def valores_de_n_y_p():
            st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
         else:
          distribucion_binomial(int(n), p)
-         
-st.text_area( j, value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
 
+
+txt = st.text_area(
+    "Text to analyze",
+    "It was the best of times, it was the worst of times, it was the age of "
+    "wisdom, it was the age of foolishness, it was the epoch of belief, it "
+    "was the epoch of incredulity, it was the season of Light, it was the "
+    "season of Darkness, it was the spring of hope, it was the winter of "
+    "despair, (...)",
+    )
+
+st.write(f'You wrote {len(txt)} characters.')
 
 if __name__ == "__main__":
     valores_de_n_y_p()
