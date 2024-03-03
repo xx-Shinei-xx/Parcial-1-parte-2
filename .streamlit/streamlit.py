@@ -1,7 +1,10 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
- 
+
+showPyplotGlobalUse = false
+
+
 # Para la distribucion binomial
 def distribucion_binomial(n, p):
     # Para los valores de x 
@@ -13,7 +16,6 @@ def distribucion_binomial(n, p):
     # Mayor parte de los códigos los leí aqui "https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html" :3
 
     #para el color
-    #plt.bar(x, Prob, color='black')
     plt.bar(x, y, color="black")
     #Título
     plt.title('Distribución binomial ')
