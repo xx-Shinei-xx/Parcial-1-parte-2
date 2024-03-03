@@ -1,28 +1,40 @@
-# file: streamlit_tests.py
-# date: 05-02-2024
-
 import streamlit as st
-import plotly.express as px
-import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import binom
 
+def plot_binomial_distribution(n, p):
+    # Generate the values of k for the x-axis
+    k_values = range(n+1)
+    
+    # Calculate the probabilities for each k
+    probabilities = binom.pmf(k_values, n, p)
+    
+    # Plot the binomial distribution
+    fig, ax = plt.subplots()
+    ax.bar(k_values, probabilities, color='skyblue', label='Binomial Distribution')
+    
+    # Overlay a line plot for better visualization
+    ax.plot(k_values, probabilities, color='red', linestyle='-', linewidth=2, marker='o', label='Line Marking Blocks')
+    
+    ax.set_title('Binomial Distribution with Line Marking Blocks')
+    ax.set_xlabel('Number of Successes (k)')
+    ax.set_ylabel('Probability')
+    ax.set_xticks(k_values)
+    ax.grid(True)
+    ax.legend()
+    
+    st.pyplot(fig)
 
-# Agregar título a la página
-st.title('Test Streamlit')
+def main():
+    st.title('Binomial Distribution Plot')
 
-# Agregar texto a la página
-st.write('Hello world')
+    # Sidebar for user input
+    with st.sidebar:
+        st.header('User Input')
+        n = st.slider('Value of n (less than 100)', 1, 100, 1)
+        p = st.slider('Value of p (between 0 and 1)', 0.0, 1.0, 0.5)
 
-# Agregar texto con formato Markdown a la página
-st.markdown('# Titulo\n## Otra cosa\nSolo texto')
+    plot_binomial_distribution(n, p)
 
-# Leer datos de pinguinos como lo trabajado en el cuaderno
-data = pd.read_csv(' https://github.com/xx-Shinei-xx/Parcial-1-parte-2/blob/main/Parcial_1_parte_2.ipynb')
-
-# Los prints solo serán visibles en la terminal pero no en la página de Streamlit.
-print(data)
-
-# Generar la gráfica a partir de los datos y guardarla en una variable llamada grafica.
-grafica = px.scatter(data,'bill_length_mm','bill_depth_mm','species',symbol='sex',)
-
-# Agregar la gráfica a la página
-st.plotly_chart(grafica)
+if __name__ == "__main__":
+    main()
