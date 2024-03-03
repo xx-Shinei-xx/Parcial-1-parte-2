@@ -56,7 +56,20 @@ def valores_de_n_y_p():
 
 
 
-  # Text area with customizable content and height
+   # Color picker to change the background color of the entire page
+    page_bg_color = st.color_picker("Choose a background color for the page", "#FFFFFF")
+    st.markdown(
+        f"""
+        <style>
+        body {{
+            background-color: {page_bg_color};
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Text area with customizable content and height
     text_color = st.color_picker("Select text color", "#FFFFFF")
     background_color = st.color_picker("Select background color", "#2E2E2E")
     st.markdown(
@@ -71,14 +84,20 @@ def valores_de_n_y_p():
         """,
         unsafe_allow_html=True
     )
-    
     st.text_area(label="Comentario de los widgets",
                  value="Escogí este widget porque quería uno que no solo fuera funcional, "
                        "sino que también tuviera una estética llamativa y para que fuera más "
                        "fácil de usar. Después de investigar y probar varias opciones, me "
                        "decidí por este tipo de widget porque me gustó y era más fácil de usar.",
                  height=150,
-                 disabled=True)  
+                 disabled=True)
+
+
+
+
+
+
+
 
 
   
