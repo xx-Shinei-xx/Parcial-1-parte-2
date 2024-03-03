@@ -50,18 +50,19 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
-#color para n
-st.markdown(
-        f"""
+# CSS para colores
+    st.markdown(
+        """
         <style>
-        .stSlider > div > div > div > div > div > div > div > div {{
-            background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
-        }}
+        .st-cc {
+            background: linear-gradient(to right,black, red, orange, yellow, green, cyan, blue, violet, white);
+        }
         </style>
         """,
         unsafe_allow_html=True
     )
- 
+
+
  # #para los valores de n (número de experimentos realizados)
     n = st.slider("Por favor ingrese un valor de n menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
  
