@@ -1,4 +1,20 @@
-#[theme]
+[theme]
+ # Color picker to change the background color of the entire page
+    page_bg_color = st.color_picker("Choose a background color for the page", "#FFFFFF")
+    st.markdown(
+        f"""
+        <style>
+        body {{
+            background-color: {page_bg_color};
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+
+
 #base="dark"
 #primaryColor="#c3ff4b"
 #backgroundColor="#2e3a52"
