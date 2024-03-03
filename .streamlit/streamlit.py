@@ -44,21 +44,30 @@ def valores_de_n_y_p():
     while True:
       #Para los errores, se usará try y except, ya que dentro de try estará el código que se ejecutará para finalizar el progarama programa, mientras que except estará por si no se ponen los valores válidos
         try:
-          #para los valroes de n (número de experimentos realizados)
-          n =   st.slider("Por favor ingrese un valor de n menor que 100: ", 1, 100, 1)
+            n = st.slider("Por favor ingrese un valor de n menor que 100: ", 1, 100, 1)
             if n >= 100:
-               st.write("Por favor ingrese un valor de n menor que 100")
+                st.write("Por favor ingrese un valor de n menor que 100")
                 continue
-                #para los valores de p (probabilidad)
-              p = st.slider("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", 0.0, 1.0, 0.5)
+                
+            p = st.slider("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", 0.0, 1.0, 0.5)
             if p <= 0 or p >= 1:
-              #mensaje para solicitar valores correctos
-               st.write("Por favor ingresar un valor de p válido")
+                st.write("Por favor ingresar un valor de p válido")
                 continue
 
             return n, p
         except ValueError:
-           st.write("Por favor, ingrese valores válidos")
+            st.write("Por favor, ingrese valores válidos")
+
+def main():
+    st.title('Input de Valores')
+    n, p = get_user_input()
+    st.write(f"n = {n}, p = {p}")
+
+
+
+
+
+
 
 #me guie en esta parte leyendo este codigo "https://stackoverflow.com/questions/419163/what-does-if-name-main-do" 
 if __name__ == "__main__":
