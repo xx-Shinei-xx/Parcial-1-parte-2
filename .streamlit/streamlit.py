@@ -6,7 +6,7 @@ from matplotlib.colors import Normalize
 # Con este codigo, evita que un texto de vigencia no salga
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-
+# Para los requirements, al inicio me salia un error asi que lo busque y encontre cuales usar "https://github.com/Buckeyes2019/Text_Analysis_Application/blob/main/requirements.txt"
 
 # Para la distribucion binomial
 def distribucion_binomial(n, p):
