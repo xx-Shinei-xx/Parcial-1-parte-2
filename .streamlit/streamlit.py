@@ -17,14 +17,12 @@ def distribucion_binomial(n, p):
  #Para la gráfica
     # Mayor parte de los códigos los leí aqui "https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html" :3
 
-     # Create a colormap for the bars
+     # Para hacer que la gráfica tenga varios colores 
     norm = Normalize(vmin=0, vmax=max(y))
     cmap = plt.get_cmap('viridis')
 
-    # Plot the binomial distribution with colored bars
+    # Para graficar con varios colores cada barrita
     plt.bar(x, y, color=cmap(norm(y)))
-    #para el color
-    #plt.bar(x, y, color="black")
     #Título
     plt.title('Distribución binomial ')
     #para el nombre del eje x, el cual es el número de éxitos donde la "x" representa el numero de exitos en la distribución binomial
