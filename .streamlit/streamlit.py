@@ -57,12 +57,12 @@ def valores_de_n_y_p():
  # cuadro de color
  #originalmente había pensado usar este widget para que el fondo de la página y otras cosas cambiaran de color al color que el usuario escoge pero no me salió :c, asi que lo deje solo para estorbar xd
     text_color = st.color_picker("Escoge un color", "#FFFFFF")
-    background_color = st.color_picker("Selecciona el color de fondo", "#2E2E2E")
+    #background_color = st.color_picker("Selecciona el color de fondo", "#2E2E2E")
     st.markdown(
         f"""
         <style>
         .stText > div > div > div > textarea {{
-            background-color: {background_color};
+           background-color: {background_color};
             color: {text_color};
             height: 100px;
         }}
