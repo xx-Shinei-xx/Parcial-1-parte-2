@@ -54,24 +54,7 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
-
-
-  
-    # Text area with customizable content and height
-    text_color = st.color_picker("Select text color", "#FFFFFF")
-    background_color = st.color_picker("Select background color", "#2E2E2E")
-    st.markdown(
-        f"""
-        <style>
-        .stText > div > div > div > textarea {{
-            background-color: {background_color};
-            color: {text_color};
-            height: 100px;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+   #  texto indicando por que seleccione ese tipo de widget para el desarrollo de mi interfaz.
     st.text_area(label="Comentario de los widgets",
                  value="Escogí este widget porque quería uno que no solo fuera funcional, "
                        "sino que también tuviera una estética llamativa y para que fuera más "
@@ -79,27 +62,13 @@ def valores_de_n_y_p():
                        "decidí por este tipo de widget porque me gustó y era más fácil de usar.",
                  height=150,
                  disabled=True)
-
-
-
-
-
-
-
-
-
   
-
-
-    
  # #para los valores de n (número de experimentos realizados)
     n = st.slider("Por favor ingresar el número de experimentos realizados (n) menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
      #para los valores de p (probabilidad)
     p = st.number_input("Por favor ingresar la probabilidad de éxito (p), tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
-
- 
- #usando los widgets
+ #para graficar 
     if st.button("Graficar"):
         if p > 1:
            st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
