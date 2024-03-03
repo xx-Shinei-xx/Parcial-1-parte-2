@@ -56,19 +56,7 @@ def valores_de_n_y_p():
 
 
 
-   # Color picker to change the background color of the entire page
-    page_bg_color = st.color_picker("Choose a background color for the page", "#FFFFFF")
-    st.markdown(
-        f"""
-        <style>
-        body {{
-            background-color: {page_bg_color};
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
+  
     # Text area with customizable content and height
     text_color = st.color_picker("Select text color", "#FFFFFF")
     background_color = st.color_picker("Select background color", "#2E2E2E")
