@@ -66,20 +66,24 @@ def valores_de_n_y_p():
         unsafe_allow_html=True
     )
 
-    # Color picker to change text color
-    text_color = st.color_picker("Select text color", "#FFFFFF")
+  
 
-    # Apply selected color to the text elements
+
+ # Text area with customizable content and height
+    text_color = st.color_picker("Select text color", "#FFFFFF")
     st.markdown(
         f"""
         <style>
-        .stText > div > div > div > div > div > div {{
+        .stText > div > div > div > textarea {{
+            background-color: #2E2E2E;
             color: {text_color};
+            height: 100px;
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
+    
 
     )
     st.text_area(label="Comentario de los widgets",
