@@ -2,7 +2,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-showPyplotGlobalUse = false
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 
 
 # Para la distribucion binomial
