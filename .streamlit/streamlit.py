@@ -5,61 +5,8 @@ from matplotlib.colors import Normalize
 
 from scipy.stats import binom
 from scipy.special import comb
-from bs4 import BeautifulSoup
-
-def custom_slider(label, min_value, max_value, value, step=1, format=None, key=None):
-    # Create unique key if not provided
-    if key is None:
-        key = label
- # Create HTML for custom slider with twilight-shifted color scheme
-    custom_slider = f"""
-    <input
-        type="range"
-        min="{min_value}"
-        max="{max_value}"
-        value="{value}"
-        step="{step}"
-        id="{key}"
-        style="-webkit-appearance: none; width: 100%; height: 25px; 
-        background: linear-gradient(to right, #000080, #8A2BE2, #800080, #4B0082, #000080);"
-    />
-    <style>
-        #{key}::-webkit-slider-thumb {{
-            -webkit-appearance: none;
-            appearance: none;
-            width: 25px;
-            height: 25px;
-            background: white;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid black;
-        }}
-    </style>
-    """
-
-    # Use BeautifulSoup to render HTML
-    soup = BeautifulSoup(custom_slider, "html.parser")
-    st.markdown(str(soup))
-
-    return st.slider(label=label,
-                     min_value=min_value,
-                     max_value=max_value,
-                     value=value,
-                     step=step,
-                     format=format,
-                     key=key) 
-                     
 
 
-
-
-
-
-
-
-
-
- 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
@@ -107,47 +54,44 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
-
-
- #codigo nuevo
-  #  CSS para el color de n
+# Apply custom CSS with "twilight_shifted" color scheme
     st.markdown(
         f"""
         <style>
-        .stSlider > div > div > div > div > div > div > div > div {{
-            background: black;
+        .st-cc {{
+            background: linear-gradient(to right, #000000, #4e4e4e, #800080, #4e4e4e, #000000);
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
 
-
-#  CSS para el color de p
+    # Customized text area with twilight background color
     st.markdown(
-        f"""
+        """
         <style>
-        .stSlider > div > div > div > div > div > div > div > div {{
-            background: white;
+        .stText > div > div > div > textarea {{
+            background-color: #2E2E2E;
+            color: white;
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
-
-
+    txt = st.text_area(
+        "Escogí este widget porque quería uno que no solo fuera funcional, "
+        "sino que también tuviera una estética llamativa y para que fuera más fácil de usar. "
+        "Después de investigar y probar varias opciones, me decidí por este tipo de widget "
+        "porque me gustó y era más fácil de usar.",
+        height=100, # Adjust height as needed
+        key='textarea'
+    )
 
 
  # #para los valores de n (número de experimentos realizados)
-    #n = st.slider("Por favor ingresar el número de experimentos realizados (n) menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
- value = custom_slider("Custom Slider", 1, 99, 50)
-st.write("Value:", value) 
+    n = st.slider("Por favor ingresar el número de experimentos realizados (n) menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
      #para los valores de p (probabilidad)
     p = st.number_input("Por favor ingresar la probabilidad de éxito (p), tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
-
-
-
-
 
 
  
