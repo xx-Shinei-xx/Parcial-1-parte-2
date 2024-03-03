@@ -55,4 +55,4 @@ def valores_de_n_y_p():
             plot_binomial_distribution(int(n), p)
 
 if __name__ == "__main__":
-    main()
+    valores_de_n_y_p()
