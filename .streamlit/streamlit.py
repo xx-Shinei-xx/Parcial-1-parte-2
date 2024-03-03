@@ -66,27 +66,6 @@ def valores_de_n_y_p():
         unsafe_allow_html=True
     )
 
-    # Customized text area with twilight background color
-    st.markdown(
-        """
-        <style>
-        .stText > div > div > div > textarea {{
-            background-color: #2E2E2E;
-            color: white;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-    st.text_area(label="Comentario de los widgets",
-                 value="Escogí este widget porque quería uno que no solo fuera funcional, "
-                       "sino que también tuviera una estética llamativa y para que fuera más "
-                       "fácil de usar. Después de investigar y probar varias opciones, me "
-                       "decidí por este tipo de widget porque me gustó y era más fácil de usar.",
-                 height=150,
-                 disabled=True)  # Set disabled parameter to True to make it read-only
-
-
     # Color picker to change text color
     text_color = st.color_picker("Select text color", "#FFFFFF")
 
@@ -101,6 +80,18 @@ def valores_de_n_y_p():
         """,
         unsafe_allow_html=True
     )
+
+    )
+    st.text_area(label="Comentario de los widgets",
+                 value="Escogí este widget porque quería uno que no solo fuera funcional, "
+                       "sino que también tuviera una estética llamativa y para que fuera más "
+                       "fácil de usar. Después de investigar y probar varias opciones, me "
+                       "decidí por este tipo de widget porque me gustó y era más fácil de usar.",
+                 height=150,
+                 disabled=True)  # Set disabled parameter to True to make it read-only
+
+
+  
 
 
     
