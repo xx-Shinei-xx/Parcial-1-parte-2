@@ -19,7 +19,7 @@ def distribucion_binomial(n, p):
 
      # Para hacer que la gráfica tenga varios colores  "https://matplotlib.org/stable/users/explain/colors/colormaps.html"
     norm = Normalize(vmin=0, vmax=max(y))
-    cmap = plt.get_cmap('twilight')
+    cmap = plt.get_cmap('twilight_shifted')
 
     # Para graficar con varios colores cada barrita
     plt.bar(x, y, color=cmap(norm(y)))
