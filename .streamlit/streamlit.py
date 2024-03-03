@@ -75,7 +75,7 @@ def valores_de_n_y_p():
         f"""
         <style>
         .stSlider > div > div > div > div > div > div > div > div {{
-            background: pink;
+            background: white;
         }}
         </style>
         """,
