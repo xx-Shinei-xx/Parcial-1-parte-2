@@ -56,6 +56,24 @@ def valores_de_n_y_p():
      #para los valores de p (probabilidad)
     p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
+# CSS para colores
+    st.markdown(
+        """
+        <style>
+        .st-cc {
+            background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+
+
+
+
+ 
  #usando los widgets
     if st.button("Graficar"):
         if p > 1:
