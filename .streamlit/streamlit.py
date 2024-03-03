@@ -66,9 +66,6 @@ def main():
 
 
 
-
-
-
 #me guie en esta parte leyendo este codigo "https://stackoverflow.com/questions/419163/what-does-if-name-main-do" 
 if __name__ == "__main__":
     choice = input(f"Dime {name}, ¿te gustaría ingresar valores personalizados para n y p? (si/no): ")
