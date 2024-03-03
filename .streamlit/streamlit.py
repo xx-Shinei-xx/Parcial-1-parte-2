@@ -14,7 +14,7 @@ def distribucion_binomial(n, p):
 
     #para el color
     #plt.bar(x, Prob, color='black')
-    plt.bar(x, y)
+    plt.bar(x, y, color="black")
     #Título
     plt.title('Distribución binomial ')
     #para el nombre del eje x, el cual es el número de éxitos donde la "x" representa el numero de exitos en la distribución binomial
@@ -49,7 +49,7 @@ def valores_de_n_y_p():
     p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
  #usando los widgets
-    if st.button("Para la gráfica"):
+    if st.button("Graficar"):
         if p > 1:
             st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
         else:
