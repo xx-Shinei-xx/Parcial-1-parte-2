@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-
+ 
 # Function to calculate binomial distribution and plot
 def plot_binomial_distribution(n, p):
     # Generate values for x-axis (number of successes)
