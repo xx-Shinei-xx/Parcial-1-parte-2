@@ -51,19 +51,16 @@ def valores_de_n_y_p():
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
 
- 
-    
-    # #para los valores de n (número de experimentos realizados)
-    n = st.number_input("Por favor ingrese un valor de n menor que 100:  ",  min_value=1, max_value=100, value=1, step=1)
-     #para los valores de p (probabilidad)
-    p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+  # User input for n and p
+    n = st.slider("Select the value of n (number of trials)", min_value=1, max_value=100, value=1, step=1)
+    p = st.slider("Select the value of p (probability of success)", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
- #usando los widgets
-    if st.button("Graficar"):
+    if st.button("Plot Distribution"):
         if p > 1:
-           st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
+            st.error("Error: The probability p cannot be greater than 1.")
         else:
-         distribucion_binomial(int(n), p)
-         
+            # Call the plot function and display the plot using st.pyplot()
+            plot = plot_binomial_distribution(int(n), p)
+            st.pyplot(plot)
 if __name__ == "__main__":
     valores_de_n_y_p()
