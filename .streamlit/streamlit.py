@@ -16,7 +16,7 @@ st.write('Hello world')
 st.markdown('# Titulo\n## Otra cosa\nSolo texto')
 
 # Leer datos de pinguinos como lo trabajado en el cuaderno
-data = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv')
+data = pd.read_csv(' https://github.com/xx-Shinei-xx/Parcial-1-parte-2/blob/main/Parcial_1_parte_2.ipynb')
 
 # Los prints solo serán visibles en la terminal pero no en la página de Streamlit.
 print(data)
