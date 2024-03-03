@@ -1,80 +1,34 @@
 import streamlit as st
+import numpy as np
 import matplotlib.pyplot as plt
-# "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binom.html#scipy.stats.binom"
-from scipy.stats import binom
 
-def distribucion_binomial(n, p):
-    #para x xd
-    x = range(n+1)
-    #  distribución binomial
-    Prob = binom.pmf(x, n, p)
+# Function to calculate binomial distribution and plot
+def plot_binomial_distribution(n, p):
+    # Generate values for x-axis (number of successes)
+    x = np.arange(0, n+1)
+    # Calculate binomial distribution
+    y = np.array([np.math.comb(n, k) * (p ** k) * ((1 - p) ** (n - k)) for k in x])
+    # Plot the binomial distribution
+    plt.bar(x, y)
+    plt.title('Binomial Distribution')
+    plt.xlabel('Number of Successes')
+    plt.ylabel('Probability')
+    st.pyplot()
 
-    #Para la gráfica
-    # Mayor parte de los códigos los leí aqui "https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html" :3
-
-
-    #para el color
-    plt.bar(x, Prob, color='black')
-    #Título
-    plt.title('Distribución binomial ')
-    #para el nombre del eje x, el cual es el número de éxitos donde la "x" representa el numero de exitos en la distribución binomial
-    plt.xlabel('Número de éxitos "x" ')
-    #para el nombre del eje y, el cual es la probabilidad de éxito es p en la distribución binomial 
-    plt.ylabel('probabilidad "p"')
-    #para los valores en el eje x
-    plt.xticks(x)
-    #segun entendí, es para ver líneas en la gráfica (no se que tan importante es dentro del código pero lo pongo por si acaso xD)
-    plt.grid(True)
-    #para ver la gráfica, no puse print porque es para texto
-    plt.show()
-    st.pyplot(fig)
-
-#para el nombre de la persona
-#name = input('Por favor indicame tu nombre:')
-#print(f'Hola {name}')
-
-
-    
- 
-
-#definimos los valores para n y para p
-def valores_de_n_y_p():
-     st.title('Distribucion binomial')
-  # para que el usuario solo pueda ingresar los valores válidos, se utiliza el bucle 'while' para que pide los valores repetidamente hasta tener los valroes válidos
-    while true:
-      #Para los errores, se usará try y except, ya que dentro de try estará el código que se ejecutará para finalizar el progarama programa, mientras que except estará por si no se ponen los valores válidos
-        try:
-            n = st.slider("Por favor ingrese un valor de n menor que 100: ", 1, 100, 1)
-            if n >= 100:
-                st.write("Por favor ingrese un valor de n menor que 100")
-                continue
-                
-            p = st.slider("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", 0.0, 1.0, 0.5)
-            if p <= 0 or p >= 1:
-                st.write("Por favor ingresar un valor de p válido")
-                continue
-
-            return n, p
-        except ValueError:
-            st.write("Por favor, ingrese valores válidos")
-
+# Streamlit interface
 def main():
-    st.title('Input de Valores')
-    n, p = get_user_input()
-    st.write(f"n = {n}, p = {p}")
+    st.title('Binomial Distribution Plotter')
+    st.write("This application allows you to plot the binomial distribution based on the parameters n and p.")
 
+    # User input for n and p
+    n = st.number_input("Enter the value of n (number of trials)", min_value=1, max_value=100, value=1, step=1)
+    p = st.number_input("Enter the value of p (probability of success)", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
+    if st.button("Plot Distribution"):
+        if p > 1:
+            st.error("Error: The probability p cannot be greater than 1.")
+        else:
+            plot_binomial_distribution(int(n), p)
 
-
-#me guie en esta parte leyendo este codigo "https://stackoverflow.com/questions/419163/what-does-if-name-main-do" 
 if __name__ == "__main__":
-    choice = input(f"Dime {name}, ¿te gustaría ingresar valores personalizados para n y p? (si/no): ")
-    if choice.lower() == 'si':
-        n, p = valores_de_n_y_p()
-    else:
-        # Default values
-        n = 1
-        p = 0.5
-
-    distribucion_binomial(n, p)
-    #fin
+    main()
