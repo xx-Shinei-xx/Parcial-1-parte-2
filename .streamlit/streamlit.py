@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
-
+ 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
@@ -36,8 +36,7 @@ def distribucion_binomial(n, p):
     #para ver la gráfica, no puse print porque es para texto
     plt.show()
     st.pyplot()
- return plt
- 
+  
 
 #para el nombre de la persona
 #name = input('Por favor indicame tu nombre:')
@@ -51,16 +50,16 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
- n = st.slider("Select the value of n (number of trials)", min_value=1, max_value=100, value=1, step=1)
-    p = st.slider("Select the value of p (probability of success)", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
-
+# Display the image
+    #image = "image.png"
+    #st.image(image, caption='Binomial Distribution', use_column_width=True)
 
 
     
     # #para los valores de n (número de experimentos realizados)
-    #n = st.number_input("Por favor ingrese un valor de n menor que 100:  ",  min_value=1, max_value=100, value=1, step=1)
+    n = st.number_input("Por favor ingrese un valor de n menor que 100:  ",  min_value=1, max_value=100, value=1, step=1)
      #para los valores de p (probabilidad)
-    #p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+    p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
  #usando los widgets
     if st.button("Graficar"):
