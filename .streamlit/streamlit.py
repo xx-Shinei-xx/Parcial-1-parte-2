@@ -2,6 +2,10 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
+
+from scipy.stats import binom
+from scipy.special import comb
+
  
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
