@@ -14,6 +14,7 @@ def distribucion_binomial(n, p):
 
     #para el color
     #plt.bar(x, Prob, color='black')
+    plt.bar(x, y)
     #Título
     plt.title('Distribución binomial ')
     #para el nombre del eje x, el cual es el número de éxitos donde la "x" representa el numero de exitos en la distribución binomial
