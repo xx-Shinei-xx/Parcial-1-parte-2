@@ -17,9 +17,9 @@ def distribucion_binomial(n, p):
  #Para la gráfica
     # Mayor parte de los códigos los leí aqui "https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html" :3
 
-     # Para hacer que la gráfica tenga varios colores 
+     # Para hacer que la gráfica tenga varios colores  "https://matplotlib.org/stable/users/explain/colors/colormaps.html"
     norm = Normalize(vmin=0, vmax=max(y))
-    cmap = plt.get_cmap('viridis')
+    cmap = plt.get_cmap('inferno')
 
     # Para graficar con varios colores cada barrita
     plt.bar(x, y, color=cmap(norm(y)))
