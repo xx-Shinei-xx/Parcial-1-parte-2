@@ -5,6 +5,59 @@ from matplotlib.colors import Normalize
 
 from scipy.stats import binom
 from scipy.special import comb
+from bs4 import BeautifulSoup
+
+def custom_slider(label, min_value, max_value, value, step=1, format=None, key=None):
+    # Create unique key if not provided
+    if key is None:
+        key = label
+ # Create HTML for custom slider with twilight-shifted color scheme
+    custom_slider = f"""
+    <input
+        type="range"
+        min="{min_value}"
+        max="{max_value}"
+        value="{value}"
+        step="{step}"
+        id="{key}"
+        style="-webkit-appearance: none; width: 100%; height: 25px; 
+        background: linear-gradient(to right, #000080, #8A2BE2, #800080, #4B0082, #000080);"
+    />
+    <style>
+        #{key}::-webkit-slider-thumb {{
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid black;
+        }}
+    </style>
+    """
+
+    # Use BeautifulSoup to render HTML
+    soup = BeautifulSoup(custom_slider, "html.parser")
+    st.markdown(str(soup))
+
+    return st.slider(label=label,
+                     min_value=min_value,
+                     max_value=max_value,
+                     value=value,
+                     step=step,
+                     format=format,
+                     key=key) 
+                     
+
+
+
+
+
+
+
+
+
 
  
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -86,10 +139,11 @@ def valores_de_n_y_p():
 
 
  # #para los valores de n (número de experimentos realizados)
-    n = st.slider("Por favor ingrese un valor de n menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
- 
+    #n = st.slider("Por favor ingresar el número de experimentos realizados (n) menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
+ value = custom_slider("Custom Slider", 1, 99, 50)
+st.write("Value:", value) 
      #para los valores de p (probabilidad)
-    p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+    p = st.number_input("Por favor ingresar la probabilidad de éxito (p), tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
 
 
