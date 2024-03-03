@@ -41,7 +41,7 @@ def distribucion_binomial(n, p):
 def valores_de_n_y_p():
      st.title('Distribucion binomial')
   # para que el usuario solo pueda ingresar los valores válidos, se utiliza el bucle 'while' para que pide los valores repetidamente hasta tener los valroes válidos
-    while True:
+    while:
       #Para los errores, se usará try y except, ya que dentro de try estará el código que se ejecutará para finalizar el progarama programa, mientras que except estará por si no se ponen los valores válidos
         try:
             n = st.slider("Por favor ingrese un valor de n menor que 100: ", 1, 100, 1)
