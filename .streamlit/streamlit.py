@@ -34,10 +34,6 @@ def distribucion_binomial(n, p):
 #print(f'Hola {name}')
 
 
- n = st.slider('Select the value of n (less than 100)', 1, 100, 1)
-    
-    # User input for p
-  
     
  
 
