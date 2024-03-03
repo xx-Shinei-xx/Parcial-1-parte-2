@@ -36,7 +36,7 @@ def distribucion_binomial(n, p):
     #para ver la gráfica, no puse print porque es para texto
     plt.show()
     st.pyplot()
-
+ return plt
  
 
 #para el nombre de la persona
