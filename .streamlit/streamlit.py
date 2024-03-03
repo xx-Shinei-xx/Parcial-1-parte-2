@@ -62,7 +62,6 @@ def valores_de_n_y_p():
         f"""
         <style>
         .stText > div > div > div > textarea {{
-           background-color: {background_color};
             color: {text_color};
             height: 100px;
         }}
