@@ -13,7 +13,7 @@ def distribucion_binomial(n, p):
     # Mayor parte de los códigos los leí aqui "https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html" :3
 
     #para el color
-    plt.bar(x, Prob, color='black')
+    #plt.bar(x, Prob, color='black')
     #Título
     plt.title('Distribución binomial ')
     #para el nombre del eje x, el cual es el número de éxitos donde la "x" representa el numero de exitos en la distribución binomial
