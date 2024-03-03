@@ -1,5 +1,5 @@
  import streamlit as st
-
+import matplotlib.pyplot as plt
 from scipy.stats import binom
 
 def plot_binomial_distribution(n, p):
