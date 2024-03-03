@@ -50,17 +50,56 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
-# CSS para colores
+
+
+ #codigo nuevo
+  #  CSS para el color de n
     st.markdown(
-        """
+        f"""
         <style>
-        .st-cc {
-            background: linear-gradient(twilight_shifted);
-        }
+        .stSlider > div > div > div > div > div > div > div > div {{
+            background: black;
+        }}
         </style>
         """,
         unsafe_allow_html=True
     )
+
+
+#  CSS para el color de p
+    st.markdown(
+        f"""
+        <style>
+        .stSlider > div > div > div > div > div > div > div > div {{
+            background: pink;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.markdown(
+        """
+        <style>
+        .stText > div > div > div > textarea {{
+            background-color: #2E2E2E;
+            color: white;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# texto
+    txt = st.text_area(
+        "Escogí este widget porque quería uno que no solo fuera funcional, "
+        "sino que también tuviera una estética llamativa y para que fuera más fácil de usar. "
+        "Después de investigar y probar varias opciones, me decidí por este tipo de widget "
+        "porque me gustó y era más fácil de usar.",
+        height=100,  
+        key='textarea'
+    )
+    
 
 
  # #para los valores de n (número de experimentos realizados)
@@ -68,18 +107,6 @@ def valores_de_n_y_p():
  
      #para los valores de p (probabilidad)
     p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
-
-# CSS para colores
-    st.markdown(
-        """
-        <style>
-        .st-cc {
-            background: linear-gradient(twilight_shifted);
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
 
 
