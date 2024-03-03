@@ -54,17 +54,7 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
-# Apply custom CSS with "twilight_shifted" color scheme
-    st.markdown(
-        f"""
-        <style>
-        .st-cc {{
-            background: linear-gradient(to right, #000000, #4e4e4e, #800080, #4e4e4e, #000000);
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+
 
   
 
