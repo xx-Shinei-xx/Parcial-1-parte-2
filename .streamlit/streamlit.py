@@ -78,7 +78,7 @@ def valores_de_n_y_p():
                        "fácil de usar. Después de investigar y probar varias opciones, me "
                        "decidí por este tipo de widget porque me gustó y era más fácil de usar.",
                  height=150,
-                 disabled=True)
+                )
   
  # #para los valores de n (número de experimentos realizados)
     n = st.slider("Por favor ingresar el número de experimentos realizados (n) menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
