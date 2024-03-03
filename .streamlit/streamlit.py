@@ -29,7 +29,7 @@ def distribucion_binomial(n, p):
     plt.show()
     st.pyplot()
 
-
+ 
 
 #para el nombre de la persona
 #name = input('Por favor indicame tu nombre:')
