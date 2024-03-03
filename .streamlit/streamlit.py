@@ -94,7 +94,7 @@ def valores_de_n_y_p():
         else:
          distribucion_binomial(int(n), p)
          
-st.text_area( , value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+st.text_area( j, value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
 
 
 if __name__ == "__main__":
