@@ -49,19 +49,26 @@ def valores_de_n_y_p():
     st.title('Distribución binomial')
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
+st.latex(r'''
+    P(X = k) = \binom{n}{k} \cdot p^k \cdot (1 - p)^{n - k}
+      ''')
 
+ with st.sidebar:
+        st.header('User Input')
+        n = st.slider('Number of Trials (n)', 1, 100, 1)
+        p = st.slider('Probability of Success (p)', 0.0, 1.0, 0.5)
 
     
     # #para los valores de n (número de experimentos realizados)
-    n = st.number_input("Por favor ingrese un valor de n menor que 100:  ",  min_value=1, max_value=100, value=1, step=1)
+   # n = st.number_input("Por favor ingrese un valor de n menor que 100:  ",  min_value=1, max_value=100, value=1, step=1)
      #para los valores de p (probabilidad)
-    p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+    #p = st.number_input("Por favor ingrese un valor de p, tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 
  #usando los widgets
-    if st.button("Graficar"):
-        if p > 1:
-            st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
-        else:
+    #if st.button("Graficar"):
+     #   if p > 1:
+      #      st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
+       # else:
          distribucion_binomial(int(n), p)
          
 if __name__ == "__main__":
