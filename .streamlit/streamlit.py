@@ -52,7 +52,7 @@ def valores_de_n_y_p():
         if p > 1:
             st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
         else:
-            plot_binomial_distribution(int(n), p)
-
+         distribucion_binomial(int(n), p)
+         
 if __name__ == "__main__":
     valores_de_n_y_p()
