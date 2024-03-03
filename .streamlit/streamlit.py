@@ -54,6 +54,23 @@ def valores_de_n_y_p():
  #una breve descrippcion del programa
     st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
 
+ # cuadro de color
+ #originalmente había pensado usar este widget para que el fondo de la página y otras cosas cambiaran de color al color que el usuario escoge pero no me salió :c, asi que lo deje solo para estorbar xd
+    text_color = st.color_picker("Escoge un color", "#FFFFFF")
+    background_color = st.color_picker("Select background color", "#2E2E2E")
+    st.markdown(
+        f"""
+        <style>
+        .stText > div > div > div > textarea {{
+            background-color: {background_color};
+            color: {text_color};
+            height: 100px;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
    #  texto indicando por que seleccione ese tipo de widget para el desarrollo de mi interfaz.
     st.text_area(label="Comentario de los widgets",
                  value="Escogí este widget porque quería uno que no solo fuera funcional, "
