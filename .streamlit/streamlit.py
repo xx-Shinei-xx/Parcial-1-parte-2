@@ -84,8 +84,6 @@ def valores_de_n_y_p():
         unsafe_allow_html=True
     )
     
-
-    )
     st.text_area(label="Comentario de los widgets",
                  value="Escogí este widget porque quería uno que no solo fuera funcional, "
                        "sino que también tuviera una estética llamativa y para que fuera más "
