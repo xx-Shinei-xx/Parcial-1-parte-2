@@ -55,7 +55,7 @@ def valores_de_n_y_p():
         """
         <style>
         .st-cc {
-            background: linear-gradient(to right,black, red, orange, yellow, green, cyan, blue, violet, white);
+            background: linear-gradient(twilight_shifted);
         }
         </style>
         """,
@@ -74,7 +74,7 @@ def valores_de_n_y_p():
         """
         <style>
         .st-cc {
-            background: linear-gradient(to right,black, red, orange, yellow, green, cyan, blue, violet, white);
+            background: linear-gradient(twilight_shifted);
         }
         </style>
         """,
