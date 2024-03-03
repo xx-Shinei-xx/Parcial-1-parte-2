@@ -19,7 +19,7 @@ def distribucion_binomial(n, p):
 
      # Para hacer que la gráfica tenga varios colores  "https://matplotlib.org/stable/users/explain/colors/colormaps.html"
     norm = Normalize(vmin=0, vmax=max(y))
-    cmap = plt.get_cmap('gist_heat')
+    cmap = plt.get_cmap('gist_stearn')
 
     # Para graficar con varios colores cada barrita
     plt.bar(x, y, color=cmap(norm(y)))
@@ -94,6 +94,8 @@ def valores_de_n_y_p():
         else:
          distribucion_binomial(int(n), p)
          
+st.text_area( , value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+
 
 if __name__ == "__main__":
     valores_de_n_y_p()
