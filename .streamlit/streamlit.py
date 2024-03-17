@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Con este codigo, evita que un texto de vigencia no salga
