@@ -2,5 +2,4 @@
 base="dark"
 primaryColor="#f00000"
 backgroundColor="#170404"
-[deprecation]
-showPyplotGlobalUse = false
+
