@@ -1,95 +1,67 @@
 import streamlit as st
+import pandas as pd
 import numpy as np
+import scipy.stats as ss
 import matplotlib.pyplot as plt
-from matplotlib.colors import Normalize
 
+# Cargar datos del archivo CSV
+@st.cache
+def load_data():
+    return pd.read_csv('Binomial-fichas.csv')
 
+data = load_data()
 
-# Con este codigo, evita que un texto de vigencia no salga
-st.set_option('deprecation.showPyplotGlobalUse', False)
+st.title('Histograma y ajuste de distribución binomial')
 
-# Para los requirements, al inicio me salia un error asi que lo busque y encontre cuales usar "https://github.com/Buckeyes2019/Text_Analysis_Application/blob/main/requirements.txt"
+# Selección de la cantidad de lanzamientos de monedas (m)
+m = st.slider('Selecciona la cantidad de lanzamientos de monedas (m)', min_value=0, max_value=100, value=50)
 
-# Para la distribucion binomial
-def distribucion_binomial(n, p):
-    # Para los valores de x 
-    x = np.arange(0, n+1)
-    # Formula de la distribucion binomial 
-    y = np.array([np.math.comb(n, k) * (p ** k) * ((1 - p) ** (n - k)) for k in x])
+# Seleccionar los primeros m lanzamientos de cada moneda
+data_selected = data.loc[:, :'Coin_10'].head(m)
 
- #Para la gráfica
-    # Mayor parte de los códigos los leí aqui "https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html" :3
+# Calcular el conteo de caras para cada conjunto de lanzamientos de monedas
+counts = data_selected.sum(axis=1)
 
-     # Para hacer que la gráfica tenga varios colores  "https://matplotlib.org/stable/users/explain/colors/colormaps.html"
-    norm = Normalize(vmin=0, vmax=max(y))
-    cmap = plt.get_cmap('twilight_shifted')
+# Crear el histograma de los conteos de caras
+fig, ax = plt.subplots()
+ax.hist(counts, bins=np.arange(0, 11, 1), density=True, alpha=0.5, color='blue', label='Histograma')
 
-    # Para graficar con varios colores cada barrita
-    plt.bar(x, y, color=cmap(norm(y)))
-    #Título
-    plt.title('Distribución binomial ')
-    #para el nombre del eje x, el cual es el número de éxitos donde la "x" representa el numero de exitos en la distribución binomial
-    plt.xlabel('Número de éxitos "x" ')
-    #para el nombre del eje y, el cual es la probabilidad de éxito es p en la distribución binomial
-    plt.ylabel('probabilidad "p"')
-    #para los valores en el eje x
-    plt.xticks(x)
-    #segun entendí, es para ver líneas en la gráfica (no se que tan importante es dentro del código pero lo pongo por si acaso xD)
-    plt.grid(True)
-    #para ver la gráfica, no puse print porque es para texto
-    plt.show()
-    st.pyplot()
-  
+# Ajustar una distribución binomial a los datos
+fitted_results = ss.binom.fit(counts, loc=0, scale=1)
 
+# Generar la distribución binomial ajustada
+x = np.arange(0, 11, 1)
+binomial_dist = ss.binom.pmf(x, *fitted_results)
 
-#definimos los valores para n y para p
-def valores_de_n_y_p():
- # Para el título
-    st.title('Distribución binomial')
- #una breve descrippcion del programa
-    st.write("Esta app fue creada con el propósito de mostrar distribuciones binomiales. La distribución binomial modela la probabilidad discreta del número de éxitos en una serie de ensayos independientes, donde cada ensayo tiene una probabilidad fija de éxito. ")
+# Graficar la distribución binomial ajustada
+ax.plot(x, binomial_dist, 'r-', label='Distribución Binomial Ajustada')
 
-    # ecuacion de la distribucion binomial "https://es.wikipedia.org/wiki/Distribuci%C3%B3n_binomial"
-    st.latex(r'''
-    P(X = k) = \binom{n}{k} \cdot p^k \cdot (1 - p)^{n - k}
-    ''')
- # cuadro de color
- # originalmente había pensado usar este widget para que el fondo de la página y otras cosas cambiaran de color al color que el usuario escoge pero no me salió :c, asi que lo deje solo para estorbar xd
-    text_color = st.color_picker("Escoge un color", "#FFFFFF")
-    st.markdown(
-        f"""
-        <style>
-        .stText > div > div > div > textarea {{
-            color: {text_color};
-            height: 100px;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-    
-   #  texto indicando por que seleccione ese tipo de widget para el desarrollo de mi interfaz.
-    st.text_area(label="Comentario de los widgets",
-                 value="Escogí este widget porque quería uno que no solo fuera funcional, "
-                       "sino que también tuviera una estética llamativa y para que fuera más "
-                       "fácil de usar. Después de investigar y probar varias opciones, me "
-                       "decidí por este tipo de widget porque me gustó y era más fácil de usar.",
-                 height=150,
-                disabled=True )
-  
- # #para los valores de n (número de experimentos realizados)
-    n = st.slider("Por favor ingresar el número de experimentos realizados (n) menor que 100:  ", min_value=1, max_value=99, value=1, step=1)
-     #para los valores de p (probabilidad)
-    p = st.number_input("Por favor ingresar la probabilidad de éxito (p), tal que p es mayor que 0 pero menor que 1 : ", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+# Mostrar los valores obtenidos del ajuste
+st.write("Parámetros del ajuste de la distribución binomial (n, p):", fitted_results)
 
- #para graficar 
-    if st.button("Graficar"):
-        if p > 1:
-           st.error("¿Podrías ingresar un valor de p mayor a 0 y menor que 1?.")
-        else:
-         distribucion_binomial(int(n), p)
+# Calcular el conteo medio de caras y su desviación estándar experimentalmente
+mean_count = np.mean(counts)
+std_count = np.std(counts)
 
+st.write("Conteo medio de caras experimental:", mean_count)
+st.write("Desviación estándar experimental del conteo de caras:", std_count)
 
+# Calcular el conteo medio de caras y su desviación estándar obtenidos del ajuste
+mean_count_fit = ss.binom.mean(*fitted_results)
+std_count_fit = ss.binom.std(*fitted_results)
+
+st.write("Conteo medio de caras obtenido del ajuste:", mean_count_fit)
+st.write("Desviación estándar del conteo de caras obtenida del ajuste:", std_count_fit)
+
+# Configuración del gráfico
+ax.set_xlabel('Conteo de caras')
+ax.set_ylabel('Densidad')
+ax.set_title(f'Distribución del conteo de caras de los primeros {m} tiros de 10 monedas')
+ax.legend()
+ax.grid(True)
+
+# Mostrar el gráfico en Streamlit
+st.pyplot(fig)
 
 if __name__ == "__main__":
     valores_de_n_y_p()
